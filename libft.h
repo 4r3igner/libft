@@ -27,5 +27,22 @@ void *ft_bzero(void* s, int n);
 void* ft_memcpy(void* dest, void* s, int n);
 
 void* ft_memmove(void* dest, void* s, int n);
+
+int ft_strlcpy(void*dest, void* src, int n);
+
+int ft_strlcat(void* dest, void* src, int n);
+
+int ft_toupper(int c);
+
+int ft_tolower(int c);
+
+void* ft_strchr(void* src, char c);
+
+void* ft_strrchr(void* src, char c);
+
+int ft_strncmp(void* src_1, void*src_2, int n);
+
+void* ft_memchr(void* src, int byte, int n);
+
 #endif /* MYLIB_H */
 

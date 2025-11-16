@@ -64,6 +64,43 @@ int main(void) {
     ft_memmove(mem+2,mem,3);
     printf("memmove()---\t%s\n",mem);
 
+    //check strlcpy()
+    char a[10] = "HelloMama";
+    char b[4];
+    ft_strlcpy(b,a,4);
+    printf("strlcpy()\t%s\n",b);
+
+    //check strlcat()
+    char c[] = "Hellogigi";
+    char d[50] = "Mama ";
+    ft_strlcat(d,c,50);
+    printf("strlcat()\t%s\n",d);
+
+    //check toupper()
+    printf("%c\n",ft_toupper('B'));
+
+    //check tolower()
+    printf("%c\n",ft_tolower('Z'));
+
+    //check strchr()
+    char* result_1 =  ft_strchr(d,'g');
+    printf("%s\n",result_1);
+
+    //check strrchr()
+    char* result_2 = ft_strrchr(d,'g');
+    printf("strrchr()\t%s\n",result_2);
+
+    //check strncmp()
+    char z[] = "Hello";
+    printf("strncmp()\t%d\n",ft_strncmp(c,z,2));
+
+    //check memchr()
+    buffer = {'T','r',0,'f',1,'m'};
+    printf("memchr()\t%s\n",ft_memchr(buffer,102,10));
+
+	
+
+
     return 0;
 
 

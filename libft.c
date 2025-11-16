@@ -102,3 +102,136 @@ void* ft_memmove(void* dest, void* src, int n){
 
 	return dest;
 }
+
+int  ft_strlcpy(void*dest, void* src, int n){
+	int i = 0;
+	char* d = (char*) dest;
+	char* s = (char*) src;
+	while (s[i]){
+		i++;
+	}
+	int j = 0;
+	if (i >= n){
+		while (n > 1){
+			d[j] = s[j];
+			j++;
+			n--;
+		}
+	}
+	else{
+		while(j!=i){
+			d[j] = s[j];
+			j++;
+		}
+	}
+	d[j] = '\0';
+
+	return i;
+}
+
+int ft_strlcat(void* dest, void* src, int n){
+	int ldest=0,lsrc=0;
+	char* d = (char*) dest;
+	char* s = (char*) src;
+	while (d[ldest])
+		ldest++;
+	while (s[lsrc])
+		lsrc++;
+	int j = 0;
+	int i = n - ldest ;
+	if ((ldest + lsrc) >= n){
+		while (j < i-1){
+			d[ldest] = s[j];
+			j++;
+			ldest++;
+		}
+	}
+	else{ //(ldest + lsrc) <= n
+		if (lsrc < i){
+			while (j < lsrc){
+				d[ldest] = s[j];
+				j++;
+				ldest++;
+			}
+		}
+		else if (lsrc >= i){
+			while (j < i){
+				d[ldest] = s[j];
+				j++;
+				ldest++;
+			}
+		}
+			
+		}
+	
+	d[ldest] = '\0';
+
+	return ldest + lsrc;
+}
+
+
+int ft_toupper(int c){
+	if (c >= 97 && c <= 122)
+		c -= 32;
+	
+	return c;
+}
+
+int ft_tolower(int c){
+	if (c >= 65 && c <= 90)
+		c += 32;
+	return c;
+}
+
+void* ft_strchr(void* src, char c){
+	char* s = (char*) src;
+	int i = 0;
+	while (s[i]!=c && s[i] != '\0'){
+		i++;
+	}
+	if (s[i] == c)
+		return s + i;
+	else
+		return NULL;
+	
+}
+
+void* ft_strrchr(void* src, char c){
+	char* s = (char*) src;
+	int i = 0;
+	int j = 0;
+	while(s[i]!='\0'){
+		if (s[i] == c){
+			j *= 0;
+			j += i;
+		}
+		i++;
+	}
+	if (s[j] == c)
+		return s + j;
+	else
+		return NULL;
+}
+
+int ft_strncmp(void* src_1, void* src_2, int n){
+	char* s_1 = (char*) src_1;
+	char* s_2 = (char*) src_2;
+	int i = 0;
+	while ((s_1[i]==s_2[i]) && ((s_1[i] && s_2[i])!= '\0') && n!=0){
+		i++;
+		n--;
+	}
+	
+	return s_1[i] - s_2[i];
+}
+
+void* ft_memchr(void* src, int byte, int n){
+	unsigned char* s = (unsigned char*) src;
+	unsigned char b = (unsigned char) byte;
+	int i = 0;
+	while (i < n){
+		if (s[i] == b)
+			return s + i;
+		i++;
+	}
+}
