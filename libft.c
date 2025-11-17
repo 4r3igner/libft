@@ -233,5 +233,48 @@ void* ft_memchr(void* src, int byte, int n){
 		if (s[i] == b)
 			return s + i;
 		i++;
-	}
+	
+	if (s[i]!=b)
+		return NULL;
 }
+
+int ft_memcmp(void* dest, void*src, int n){
+	unsigned char* d = (unsigned char*) dest;
+	unsigned char* s = (unsigned char*) src;
+	int i = 0;
+	while (i<n){
+		if (d[i] == s[i])
+			i++;
+		else
+			return d[i] - s[i];
+	}
+	return 0;
+}
+
+
+char* ft_strnstr(char* src, char* word, int n) {
+    int len = 0;
+    while (word[len])
+        len++;
+
+    if (len == 0)
+        return src;
+
+    int i = 0;
+    int j = 0;
+
+    while (i < n) {
+        if (src[i] == word[j]) {
+            j++;
+            if (j == len)
+                return src + (i - len + 1);
+        } else {
+            i -= j;   // backtrack to the position after the first matched char
+            j = 0;
+        }
+        i++;
+    }
+
+    return NULL;
+}
+

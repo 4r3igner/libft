@@ -44,5 +44,11 @@ int ft_strncmp(void* src_1, void*src_2, int n);
 
 void* ft_memchr(void* src, int byte, int n);
 
+int ft_memcmp(void* dest, void *src, int n);
+
+char* ft_strnstr(char* src, char* word, int n);
+
+int ft_atoi(char* src);
+
 #endif /* MYLIB_H */
 

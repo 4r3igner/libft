@@ -95,9 +95,14 @@ int main(void) {
     printf("strncmp()\t%d\n",ft_strncmp(c,z,2));
 
     //check memchr()
-    buffer = {'T','r',0,'f',1,'m'};
-    printf("memchr()\t%s\n",ft_memchr(buffer,102,10));
-
+   // buffer = {'T','r',0,'f',1,'m'};
+    //printf("memchr()\t%s\n",ft_memchr(buffer,102,10));
+    //
+    //check strntr()
+    char w[] = "BunaZiuaMama";
+    char ww [] = "Ziua";
+    printf("strnstr()\t%s\n",ft_strnstr(w,ww,10));
+	
 	
 
 
