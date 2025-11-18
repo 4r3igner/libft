@@ -1,7 +1,9 @@
 #ifndef MYLIB_H
 #define MYLIB_H
 
-#include <unistd.h>   /* allowed by your constraint */
+#include <unistd.h> /* allowed by your constraint */
+
+#include <stdlib.h>
 
 /* public API */
 
@@ -50,7 +52,9 @@ char* ft_strnstr(char* src, char* word, int n);
 
 int ft_atoi(char* src);
 
+void* ft_calloc(size_t n_elements, size_t size);
 
+char* ft_strdup(const char* s);
 
 #endif /* MYLIB_H */
 

@@ -233,9 +233,8 @@ void* ft_memchr(void* src, int byte, int n){
 		if (s[i] == b)
 			return s + i;
 		i++;
-	
-	if (s[i]!=b)
-		return NULL;
+	}	
+	return NULL;
 }
 
 int ft_memcmp(void* dest, void*src, int n){
@@ -303,3 +302,42 @@ int ft_atoi(char* src){
 	else
 		return num;
 }
+
+
+void* ft_calloc(size_t n_elements, size_t size){
+	void* ptr;
+	
+	size_t MAX = (size_t) - 1;
+
+	if (n_elements == 0 || size == 0)
+		return malloc(0);
+	
+	if (n_elements > (MAX/size))
+			return NULL;
+	
+
+	size_t total = n_elements * size;
+
+	ptr = malloc(total);
+	
+	ft_memset(ptr,0,total);
+
+	return ptr;
+}
+
+char* ft_strdup(const char* s){
+	size_t len = ft_strlen(s) + 1;
+
+	char* new_s = (char*) ft_calloc(len,sizeof(char));
+	if (new_s == NULL)
+		return NULL;
+
+	size_t i  = 0;
+	while (i < len){
+		new_s[i] = s[i];
+		i++;
+	}
+	return new_s;
+}
+
+

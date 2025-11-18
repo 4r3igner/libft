@@ -102,6 +102,11 @@ int main(void) {
     char w[] = "BunaZiuaMama";
     char ww [] = "Ziua";
     printf("strnstr()\t%s\n",ft_strnstr(w,ww,10));
+
+
+    //check atoi()
+    char y[] = "--- ++ 435ab5";
+    printf("atoi\t%d\n",ft_atoi(y));
 	
 	
 
