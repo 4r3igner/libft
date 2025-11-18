@@ -340,4 +340,70 @@ char* ft_strdup(const char* s){
 	return new_s;
 }
 
+//--------------------------------------------------------------------------
+//     			------	PART 2	------------
+//-------------------------------------------------------------------------
 
+
+
+char* ft_substr(char const* s, unsigned int n, size_t len){
+	size_t i;
+	char* new_s;
+	size_t actual_len;
+
+	if (n >=(unsigned int) ft_strlen(s)){
+		new_s  = (char*)malloc(1);
+		if (new_s == NULL)
+			return NULL;
+		new_s[0] = '\0';
+	}
+
+	actual_len = ft_strlen(s) - n;
+	if (actual_len > n)
+		actual_len = len;
+	
+	new_s = (char*)malloc(actual_len+1);
+	if (new_s == NULL)
+		return NULL;
+
+	i = 0;
+	while(i<actual_len){
+		new_s[i] = s[n+i];
+		i++;
+	}
+
+	new_s[i] = '\0';
+	return new_s;
+}
+
+char* ft_strjoin(char const* s1, char const* s2){
+	size_t l_s1 = ft_strlen(s1);
+	size_t l_s2 = ft_strlen(s2);
+	size_t len = l_s1 + l_s2;
+	char* new_s;
+
+	if(len == 0){
+		new_s = (char*)malloc(1);
+		new_s[0] = '\0';
+		return new_s;
+	}
+	
+	new_s = (char*)malloc(len);
+
+	size_t i = 0;
+	size_t j = 0;
+	while (i+j < len){
+		if (i < l_s1){
+			new_s[i] = s1[i];
+			i++;
+		}
+		if (j < l_s2){
+			new_s[l_s1 + j] = s2[j];
+			j++;
+		}
+	}
+	new_s[len] = '\0';
+	return new_s;
+	
+	
+}

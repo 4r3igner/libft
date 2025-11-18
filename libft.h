@@ -56,5 +56,13 @@ void* ft_calloc(size_t n_elements, size_t size);
 
 char* ft_strdup(const char* s);
 
+//-----------------------------------------------------------
+//			----PART 2----	
+//-----------------------------------------------------------
+
+char* ft_substr(char const* s, unsigned int n, size_t len);
+
+char* ft_strjoin(char const* s1, char const* s2);
+
 #endif /* MYLIB_H */
 

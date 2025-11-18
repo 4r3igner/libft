@@ -109,7 +109,18 @@ int main(void) {
     printf("atoi\t%d\n",ft_atoi(y));
 	
 	
+//---------------------------------------------------------------------------
+//		----------PART 2------------
+//--------------------------------------------------------------------------
 
+    char* res = ft_substr(w,3,3);
+    printf("\n\n\nsubstr()\t%s\n",res);
+
+    //check strjoin()
+    char e[] = "Hello";
+    char f[] = " my dear love!";
+    char* res_1 = ft_strjoin(e,f);
+    printf("strjoin()\t%s\n",res_1);
 
     return 0;
 
