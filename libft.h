@@ -50,5 +50,7 @@ char* ft_strnstr(char* src, char* word, int n);
 
 int ft_atoi(char* src);
 
+
+
 #endif /* MYLIB_H */
 

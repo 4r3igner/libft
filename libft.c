@@ -278,3 +278,28 @@ char* ft_strnstr(char* src, char* word, int n) {
     return NULL;
 }
 
+int ft_atoi(char* src){
+	int i = 0;
+	int j = 1;
+	int z = 1;
+	int num = 0;
+	int sign = 0;
+	while (j!= 0){
+		if (src[i] == 45){
+			sign++;
+		}
+		if ( z == 0)
+			j = 0;
+		while (src[i] >= 48 && src[i] <= 57){
+			num = num*10 + src[i] - 48;
+			i++;
+			z = 0;
+		}
+		i++;
+
+	}
+	if (sign % 2 != 0)
+		return -num;
+	else
+		return num;
+}
