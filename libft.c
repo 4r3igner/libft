@@ -45,8 +45,8 @@ int ft_isprint(unsigned c){
 		return 0;
 }
 
-int ft_strlen(const char *s){
-	int n = 0;
+size_t ft_strlen(const char *s){
+	size_t n = 0;
 	while(s[n])
 		n++;
 	return n;
@@ -406,4 +406,65 @@ char* ft_strjoin(char const* s1, char const* s2){
 	return new_s;
 	
 	
+}
+
+char* ft_strtrim(char const* s1, char const* set){
+    size_t i = 0;
+    size_t j = 0;
+    char* s;
+
+    size_t len_s = ft_strlen(s1);
+    size_t len_set = ft_strlen(set);
+
+    s = (char*)malloc(len_s*sizeof(char));
+
+    if (s == NULL)
+	    return NULL;
+
+    int found = 0;
+    size_t t = 0;
+    size_t len_found = 0;
+
+    while (i < len_s){
+        while (j < len_set){
+            if (s1[i] == set[j]){
+                len_found++;
+                found = 1;
+                j = len_set;
+            }
+            else
+                j++;
+        }
+        j = 0;
+        if (found != 1){
+            s[t] = s1[i];
+            t++;
+        }
+        found = 0;
+        i++;
+    }
+    
+    i = 0;
+    j = 0;
+    size_t len_final = len_s - len_found  ;
+    char* final_s = (char*)malloc(len_final + 1);
+	
+    if (final_s == NULL)
+	    return NULL;
+    
+    while (i < len_final){
+      final_s[i] = s[i];
+      i++;
+    }
+    final_s[i] = '\0';
+    
+    return final_s;
+} 
+
+char** ft_split(char const* s, char c){
+	size_t OG_len = ft_strlen(s);
+	size_t i = 0;
+	size_t j = 0;
+	size_t n_arr = 0;
+	size_t n
 }

@@ -122,6 +122,11 @@ int main(void) {
     char* res_1 = ft_strjoin(e,f);
     printf("strjoin()\t%s\n",res_1);
 
+    //check strtrim()
+    char trim [] = " e";
+    char* res_2 = ft_strtrim(f,trim);
+    printf("strtrim()\t%s\n",res_2);
+
     return 0;
 
 
