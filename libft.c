@@ -460,11 +460,112 @@ char* ft_strtrim(char const* s1, char const* set){
     
     return final_s;
 } 
+#include <unistd.h>
+#include <stdlib.h>
 
-char** ft_split(char const* s, char c){
-	size_t OG_len = ft_strlen(s);
-	size_t i = 0;
-	size_t j = 0;
-	size_t n_arr = 0;
-	size_t n
+char **ft_split(const char *s, char c)
+{
+    if (!s)
+        return NULL;
+
+    // Step 1: Count substrings
+    int count = 0;
+    int i = 0;
+    int inside = 0;
+
+    while (s[i] != '\0') {
+        if (s[i] != c && inside == 0) {
+            inside = 1;
+            count++;
+        } else if (s[i] == c) {
+            inside = 0;
+        }
+        i++;
+    }
+
+    // Step 2: Allocate double pointer
+    char **arr = (char **)malloc((count + 1) * sizeof(char *));
+    if (!arr)
+        return NULL;
+
+    arr[count] = NULL;  // Null-terminate
+
+    // Step 3: Extract substrings
+    int idx = 0;  // substring index
+    i = 0;
+
+    while (s[i] != '\0') {
+        // skip delimiters
+        while (s[i] == c)
+            i++;
+
+        if (s[i] == '\0')
+            break;
+
+        // find substring length
+        int start = i;
+        int len = 0;
+        while (s[i] != '\0' && s[i] != c) {
+            len++;
+            i++;
+        }
+
+        // allocate memory for substring
+        arr[idx] = (char *)malloc(len + 1);
+        if (!arr[idx]) {
+            // allocation failed → free everything
+            for (int k = 0; k < idx; k++)
+                free(arr[k]);
+            free(arr);
+            return NULL;
+        }
+
+        // copy substring manually
+        for (int j = 0; j < len; j++)
+            arr[idx][j] = s[start + j];
+
+        arr[idx][len] = '\0';
+        idx++;
+    }
+
+    return arr;
+}
+
+char* ft_itoa(int n){
+    int j = 0;
+    int num = n;
+    while(num % 10 != 0){
+        num = num / 10;
+        j++;
+    }
+
+    if (n < 0){
+        j++;
+        num = -n;
+    }
+    else
+        num = n;
+    char* s = malloc((j+1) * sizeof(char));
+    if (n < 0)
+        s[0] = 45;
+    s[j] = '\0';
+    
+    if (n < 0 ) {
+      while(j - 1> 0){
+          s[j-1] = num % 10 + 48;
+          num = num / 10;
+          j--;
+      }
+    }
+    else{
+      while(j != 0){
+          s[j-1] = num % 10 + 48;
+          num = num / 10;
+          j--;
+      }
+      
+    }
+
+    return s;
+
 }

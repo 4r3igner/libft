@@ -127,6 +127,13 @@ int main(void) {
     char* res_2 = ft_strtrim(f,trim);
     printf("strtrim()\t%s\n",res_2);
 
+    //check split()
+    char** res_4 = ft_split(f,' ');
+    printf("split()\t\t%s, %s\n",res_4[0], res_4[1]);
+
+    //check itoa()
+    printf("itoa()\t\t%s\n",ft_itoa(-213452));
+
     return 0;
 
 
