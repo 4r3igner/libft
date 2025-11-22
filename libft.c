@@ -460,8 +460,6 @@ char* ft_strtrim(char const* s1, char const* set){
     
     return final_s;
 } 
-#include <unistd.h>
-#include <stdlib.h>
 
 char **ft_split(const char *s, char c)
 {
@@ -569,3 +567,61 @@ char* ft_itoa(int n){
     return s;
 
 }
+
+char *ft_strmapi(const char *s, char (*f)(unsigned int, char));
+
+void ft_striteri(char *s, void (*f)(unsigned int,char*));
+
+void ft_putchar_fd(char c, int fd){
+	write(fd,&c,1);
+}
+
+void ft_putstr_fd(char* s, int fd){
+	size_t i = 0;
+	while(s[i]){
+		write(fd,&s[i],1);
+		i++;
+	}
+}
+
+void ft_putendl_fd(char* s, int fd){
+	size_t i = 0;
+	while(s[i]){
+		write(fd,&s[i],1);
+		i++;
+	}
+	write(fd,"\n",1);
+}
+
+void ft_putnbr_fd(int n, int fd){
+	if (n < 0){
+		n = -n;
+		write(fd,"-",1);
+	}
+
+	char s[12];
+	s[11] = '\0';
+
+	int i = 0;
+
+	while ( n % 10 != 0){
+		s[i] = n % 10  + 48;
+		n = n / 10;
+		i++;
+	}
+
+	i--;
+
+	while(i > - 1){
+		write(fd,&s[i],1);
+		i--;
+	}
+}
+
+
+//-------------------------------------------------------------------------------
+//			-----------BONUS_PART-----------
+//-------------------------------------------------------------------------------
+
+
+
